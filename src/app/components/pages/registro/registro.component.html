@@ -1,0 +1,78 @@
+<div
+  class="container-fluid vh-100 d-flex align-items-center justify-content-center"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-6 col-sm-8 mx-auto">
+        <form>
+            <a class="navbar-brand d-flex align-items-center justify-content-center" [routerLink]="['']">
+              <div class="mx-2">
+                <img
+                  src="assets/svg/helmet.svg"
+                  width="80"
+                  alt="Software para el Sistema de Geestion de Seguridad y Salud en el Trabajo"
+                  srcset=""
+                />
+              </div>
+              <div class="text-dark">
+                <h2 class="fw-bolder mb-0">SG-SST</h2>
+                <p class="eslogan mb-0">Sistema de información</p>
+              </div>
+            </a>
+          <br />
+          <h2 class="fw-bolder">Registrar mi empresa</h2>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Correo electrónico</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label small" for="exampleCheck1"
+              >Acepto los <a style="color: blue;" href="">Términos y condiciones</a></label
+            >
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label small" for="exampleCheck1"
+              >Acepto la  <a style="color: blue;" href="">Pólitica de tratamiento de datos personales</a></label
+            >
+          </div>
+          <div class="d-grid gap-3">
+            <a class="btn btn-primary">Registrar mi empresa</a>
+            <p class="mb-0 text-center">¿Ya tienes cuenta?</p>
+            <a class="btn btn-secondary" [routerLink]="['../login']"
+              >Iniciar sesión</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
