@@ -1,0 +1,102 @@
+<div
+  class="container-fluid vh-100 d-flex align-items-center justify-content-center"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-8 mx-auto">
+        <form (ngSubmit)="crearEmpresa(formulario)" #formulario="ngForm">
+            <a class="navbar-brand d-flex align-items-center justify-content-center" [routerLink]="['']">
+              <div class="mx-2">
+                <img
+                  src="assets/svg/helmet.svg"
+                  width="80"
+                  alt="Software para el Sistema de Geestion de Seguridad y Salud en el Trabajo"
+                  srcset=""
+                />
+              </div>
+              <div class="text-dark">
+                <h2 class="fw-bolder mb-0">SG-SST</h2>
+                <p class="eslogan mb-0">Sistema de información</p>
+              </div>
+            </a>
+          <br />
+          <h2 class="fw-bolder">Mi empresa</h2>
+          <p >Completa el siguiente formulario.</p>
+
+          <div class="mb-3">
+            <label for="nit" class="form-label"
+              >NIT</label
+            >
+            <input
+              id="nit"
+              #nit="ngModel"
+              type="number"
+              class="form-control"
+              [class.is-invalid]="nit.invalid && nit.touched"
+              name="nit"
+              ngModel
+              placeholder="Ingresa el NIT de la empresa"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="razonSocial" class="form-label"
+              >Razón social</label
+            >
+            <input
+              id="razonSocial"
+              #razonSocial="ngModel"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="razonSocial.invalid && razonSocial.touched"
+              name="razonSocial"
+              ngModel
+              placeholder="Ingrese el nombre de la empresa"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="direccion" class="form-label"
+              >Dirección</label
+            >
+            <input
+              id="direccion"
+              #direccion="ngModel"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="direccion.invalid && direccion.touched"
+              name="direccion"
+              ngModel
+              placeholder="Ingrese la dirección de la empresa"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="telefono" class="form-label"
+              >Teléfono</label
+            >
+            <input
+              id="telefono"
+              #telefono="ngModel"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="telefono.invalid && telefono.touched"
+              name="telefono"
+              ngModel
+              placeholder="Ingrese un número telefónico"
+              required
+            />
+          </div>
+
+          <div class="d-grid gap-3">
+            <button class="btn btn-primary" type="submit">Finalizar registro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

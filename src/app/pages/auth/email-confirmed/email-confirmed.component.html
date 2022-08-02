@@ -1,0 +1,74 @@
+<div
+  class="container-fluid vh-100 d-flex align-items-start justify-content-center pt-5"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-8 mx-auto">
+        <a
+          class="navbar-brand d-flex align-items-center justify-content-center"
+          [routerLink]="['']"
+        >
+          <div class="mx-2">
+            <img
+              src="assets/svg/helmet.svg"
+              width="80"
+              alt="Software para el Sistema de Geestion de Seguridad y Salud en el Trabajo"
+              srcset=""
+            />
+          </div>
+          <div class="text-dark">
+            <h2 class="fw-bolder mb-0">SG-SST</h2>
+            <p class="eslogan mb-0">Sistema de información</p>
+          </div>
+        </a>
+        <br />
+
+        <ng-container *ngIf="isVerificado; else elseTemplate">
+          <div class="text-center">
+            <h2 class="fw-bolder text-center">Correo verificado</h2>
+            <p>
+              Bienvenido, tu correo ta está verificado, continua el proceso iniciando sesión y completando el formulario de registro.
+            </p>
+            <a class="btn btn-primary text-dark" [routerLink]="['/login']"
+              >Completa el registro</a
+            >
+          </div>
+        </ng-container>
+
+        <ng-template #elseTemplate>
+          <form (ngSubmit)="reSendEmailVerification(formulario)" #formulario="ngForm">
+            <br />
+            <h2 class="fw-bolder">Verificar mi correo</h2>
+            <p>
+                Solicita un nuevo link de verificación.
+            </p>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input
+                id="email"
+                #correo="ngModel"
+                type="email"
+                class="form-control"
+                [class.is-invalid]="correo.invalid && correo.touched"
+                name="correo"
+                ngModel
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                placeholder="micorreo@ejemplo.com"
+                aria-describedby="emailHelp"
+                required
+              />
+              <div id="emailHelp" class="form-text">Ingresa el correo con el que te registraste.</div>
+            </div>
+
+            <div class="d-grid gap-3">
+              <button class="btn btn-primary" type="submit">Enviar correo</button>
+              <a class="btn btn-secondary text-dark" [routerLink]="['']"
+                >Ir al inicio</a
+              >
+            </div>
+          </form>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

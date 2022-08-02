@@ -1,6 +1,5 @@
 // regular style toast
-@import '~ngx-toastr/toastr';
-
+@import "~ngx-toastr/toastr";
 
 $primary: #ff873c;
 $secondary: #ced4da;
@@ -10,14 +9,24 @@ $font-weight-bolder: 900;
 
 * {
   font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .btn {
-    font-weight: bold;
-    font-style: normal;
-    font-size: 14px;
-    border-radius: 6px;
-    padding: 14px 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 14px 30px;
+}
+
+.btn-sm {
+  font-weight: bold;
+  font-style: normal;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px 20px;
 }
 
 input {
@@ -25,27 +34,27 @@ input {
 }
 
 .eslogan {
-    font-size: x-small;
-    font-weight: 500;
+  font-size: x-small;
+  font-weight: 500;
 }
 
 .form-label {
-    font-size: normal;
-    font-weight: 500;
+  font-size: normal;
+  font-weight: 500;
 }
 
 .form-check-input {
-    height: 18px;
-    width: 18px;
-    margin-right: 8px;
-    border-radius: 0.15em
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+  border-radius: 0.15em;
 }
 
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: local("Material Icons"), local("MaterialIcons-Regular"),
+  src: local("Material Icons"), local("MaterialIcons-Regular");
 }
 
 .material-icons {
@@ -71,4 +80,20 @@ input {
 
   /* Support for IE. */
   font-feature-settings: "liga";
+}
+
+.btn-icon {
+  display: flex;
+  width: auto;
+  height: 36px;
+  align-items: center;
+  border-radius: 6px;
+  padding: 4px 8px;
+  .material-icons {
+    font-size: 18px;
+  }
+  span {
+    margin-left: 4px;
+    font-size: 12px;
+  }
 }

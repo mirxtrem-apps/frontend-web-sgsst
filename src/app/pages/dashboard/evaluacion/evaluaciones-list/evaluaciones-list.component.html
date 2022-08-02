@@ -1,0 +1,40 @@
+<h1 class="fw-bold">Mis Evaluaciones</h1>
+<h4 class="text-muted">Evaluación de los estándares mínimos</h4>
+<div class="row mb-3">
+  <div class="col"></div>
+  <div class="col-auto">
+    <a class="btn btn-primary btn-sm mx-1" [routerLink]="[ './nuevo']"> Nueva evaluación </a>
+  </div>
+  <div class="col-2"></div>
+</div>
+<div class="col-10">
+  <table class="table table-bg-white border rounded align-middle">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Empleados</th>
+        <th scope="col">Riesgo</th>
+        <th scope="col">Tipo de Responsable SST</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="a">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>
+          <div class="row">
+            <a class="btn btn-danger btn-icon mx-2" (click)="eliminarItem()">
+              <i class="material-icons">delete_forever</i>
+              <span>Eliminar</span>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

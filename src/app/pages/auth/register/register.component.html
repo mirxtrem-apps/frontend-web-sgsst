@@ -1,0 +1,109 @@
+<div
+  class="container-fluid vh-100 d-flex align-items-center justify-content-center"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-6 col-sm-8 mx-auto">
+        <form (ngSubmit)="registro(formulario)" #formulario="ngForm">
+          <a
+            class="navbar-brand d-flex align-items-center justify-content-center"
+            [routerLink]="['']"
+          >
+            <div class="mx-2">
+              <img
+                src="assets/svg/helmet.svg"
+                width="80"
+                alt="Software para el Sistema de Geestion de Seguridad y Salud en el Trabajo"
+                srcset=""
+              />
+            </div>
+            <div class="text-dark">
+              <h2 class="fw-bolder mb-0">SG-SST</h2>
+              <p class="eslogan mb-0">Sistema de información</p>
+            </div>
+          </a>
+          <br />
+          <h2 class="fw-bolder">Registrar mi empresa</h2>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input
+              id="email"
+              #correo="ngModel"
+              type="email"
+              class="form-control"
+              [class.is-invalid]="correo.invalid && correo.touched"
+              name="correo"
+              ngModel
+              pattern=""
+              placeholder="micorreo@ejemplo"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input
+              id="password"
+              #password="ngModel"
+              [type]="visible ? 'text' : 'password'"
+              class="form-control"
+              [class.is-invalid]="correo.invalid && correo.touched"
+              name="password"
+              ngModel
+              placeholder="Ingrese una contraseña"
+              minlength="6"
+              required
+            />
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              id="exampleCheck1"
+              type="checkbox"
+              class="form-check-input"
+              (change)="toggleVisibility()"
+            />
+            <label class="form-check-label small" for="exampleCheck1"
+              >Mostrar contraseña</label
+            >
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              id="terminos"
+              type="checkbox"
+              class="form-check-input"
+              [checked]="terminos"
+              (change)="toggleTerminos()"
+              />
+              <label class="form-check-label small" for="exampleCheck1"
+              >Acepto los
+              <a style="color: blue" href="">Términos y condiciones</a></label
+              >
+            </div>
+            <div class="mb-3 form-check">
+              <input
+              id="politicas"
+              type="checkbox"
+              class="form-check-input"
+              [checked]="politicas"
+              (change)="togglePoliticas()"
+            />
+            <label class="form-check-label small" for="exampleCheck1"
+              >Acepto la
+              <a style="color: blue" href=""
+                >Pólitica de tratamiento de datos personales</a
+              ></label
+            >
+          </div>
+          <div class="d-grid gap-3">
+            <button class="btn btn-primary" type="submit" >Registrar mi empresa</button>
+            <p class="mb-0 text-center">¿Ya tienes cuenta?</p>
+            <a class="btn btn-secondary" [routerLink]="['../login']"
+              >Iniciar sesión</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
