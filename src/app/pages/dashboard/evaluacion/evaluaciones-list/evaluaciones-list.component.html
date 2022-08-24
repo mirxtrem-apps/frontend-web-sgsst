@@ -1,5 +1,5 @@
 <h1 class="fw-bold">Mis Evaluaciones</h1>
-<h4 class="text-muted">Evaluación de los estándares mínimos</h4>
+<h4 class="text-muted mb-3">Evaluación de los estándares mínimos</h4>
 <div class="row mb-3">
   <div class="col"></div>
   <div class="col-auto">
@@ -13,24 +13,28 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Fecha</th>
-        <th scope="col">Empleados</th>
-        <th scope="col">Riesgo</th>
-        <th scope="col">Tipo de Responsable SST</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Avance [%]</th>
+        <th scope="col">Puntaje</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="a">
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+      <tr *ngFor="let evaluacion of listaEvaluaciones;let i=index" >
+        <th scope="row">{{ i + 1 }}</th>
+        <td class="text-center">{{ evaluacion.fecha | date }}</td>
+        <td class="">{{ evaluacion.descripcion }}</td>
+        <td class="text-center">{{ evaluacion.cant_estandares_cumplidos | percent }}</td>
+        <td class="text-center">{{ evaluacion.puntaje }}</td>
         <td>
           <div class="row">
-            <a class="btn btn-danger btn-icon mx-2" (click)="eliminarItem()">
+            <a class="btn btn-danger btn-icon mx-2" (click)="eliminarItem(evaluacion.id!)">
               <i class="material-icons">delete_forever</i>
               <span>Eliminar</span>
+            </a>
+            <a class="btn btn-success btn-icon" [routerLink]="['./', evaluacion.id]">
+              <i class="material-icons">visibility</i>
+              <span>Visualizar</span>
             </a>
           </div>
         </td>

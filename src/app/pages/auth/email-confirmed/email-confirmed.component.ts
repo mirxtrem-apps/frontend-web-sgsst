@@ -23,28 +23,32 @@ export class EmailConfirmedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.params.queryParams.subscribe((data) => (this.auth = data.auth));
-    this.authService.validateEmail(this.auth).subscribe(
-      (resp) => {
-        console.log(resp);
-        this.isVerificado = true;
-        Swal.fire({
-          icon: 'success',
-          title: 'Correo verificado',
-          text: 'Tu cuenta ahora esta activa, por favor completa el proceso de registro con los datos de tu empresa.',
-          confirmButtonColor: '#ff873c',
-          confirmButtonText: 'Entendido',
-        });
-      },
-      (error: HttpErrorResponse) => {
-        Swal.close();
-
-        this.alert.error(`${error.error.error}`, '', {
-          positionClass: 'toast-top-right',
-          progressBar: true,
-        });
-      }
-    );
+    this.params.queryParams.subscribe(({auth}) => {
+      this.auth = auth;
+      console.log(auth);
+      
+      this.authService.validateEmail(this.auth).subscribe(
+        (resp) => {
+          console.log(resp);
+          this.isVerificado = true;
+          Swal.fire({
+            icon: 'success',
+            title: 'Correo verificado',
+            text: 'Tu cuenta ahora esta activa, por favor completa el proceso de registro con los datos de tu empresa.',
+            confirmButtonColor: '#ff873c',
+            confirmButtonText: 'Entendido',
+          });
+        },
+        (error: HttpErrorResponse) => {
+          Swal.close();
+          console.log(error);
+          this.alert.error(`${error.error.error}`, '', {
+            positionClass: 'toast-top-right',
+            progressBar: true,
+          });
+        }
+      );
+    });
   }
 
   visible: boolean = false;

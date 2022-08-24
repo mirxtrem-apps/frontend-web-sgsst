@@ -1,1 +1,39 @@
-<p>evaluaciones-create works!</p>
+<h1 class="fw-bold">Nueva evaluacion</h1>
+<h4 class="text-muted mb-3">Evaluación de los estándares mínimos</h4>
+<p class="lead">Selecciona la clasificación mas reciente.</p>
+<div class="row mb-3">
+  <div class="col"></div>
+  <div class="col-2"></div>
+</div>
+<div class="col-10">
+  <div class="table-responsive">
+    <table class="table table-bg-white border rounded align-middle">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha</th>
+          <th scope="col"># Empleados</th>
+          <th scope="col">Nivel de Riesgo</th>
+          <th scope="col"># Estándares</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clasificacion of listaClasificaciones;let i=index" >
+          <th scope="row">{{ i + 1 }}</th>
+          <td class="text-center">{{ clasificacion.fecha | date }}</td>
+          <td class="text-center">{{ clasificacion.num_empleados }}</td>
+          <td class="text-center">Nivel {{ clasificacion.nivel_riesgo }}</td>
+          <td class="text-center">{{ clasificacion.num_estandares }}</td>
+          <td>
+            <div class="row">
+              <a class="btn btn-success btn-icon" (click)="empezarEvaluacion(clasificacion.id)">
+                <span>Seleccionar</span>
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

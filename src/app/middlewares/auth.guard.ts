@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -12,7 +13,7 @@ import { AuthService } from '../services/auth/auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,16 +25,12 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     let isLogged = this._authService.checkSession();
 
-    if (this._authService.auth.nit) {
-      return true;
-    }
-
     if (isLogged) {
       return true;
     }
     console.log(isLogged);
     console.log("Bloqueado por el AuthGuard Can activate");
-    
+    this.router.navigateByUrl('/')
     return false;
   }
 }

@@ -16,26 +16,26 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Fecha</th>
-          <th scope="col">Empleados</th>
-          <th scope="col">Riesgo</th>
-          <th scope="col">Tipo de Responsable SST</th>
+          <th scope="col"># Empleados</th>
+          <th scope="col">Nivel de Riesgo</th>
+          <th scope="col"># Estándares</th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="a">
-          <th scope="row">1</th>
-          <td>23/07/2022</td>
-          <td>2</td>
-          <td>Nivel 5</td>
-          <td>Profesional SST</td>
+        <tr *ngFor="let clasificacion of listaClasificaciones;let i=index" >
+          <th scope="row">{{ i + 1 }}</th>
+          <td class="text-center">{{ clasificacion.fecha | date }}</td>
+          <td class="text-center">{{ clasificacion.num_empleados }}</td>
+          <td class="text-center">Nivel {{ clasificacion.nivel_riesgo }}</td>
+          <td class="text-center">{{ clasificacion.num_estandares }}</td>
           <td>
             <div class="row">
-              <a class="btn btn-danger btn-icon mx-2" (click)="eliminarItem()">
+              <a class="btn btn-danger btn-icon mx-2" (click)="eliminarItem(clasificacion.id!)">
                 <i class="material-icons">delete_forever</i>
                 <span>Eliminar</span>
               </a>
-              <a class="btn btn-success btn-icon" [routerLink]="['./', 1]">
+              <a class="btn btn-success btn-icon" [routerLink]="['./', clasificacion.id]">
                 <i class="material-icons">edit</i>
                 <span>Editar</span>
               </a>

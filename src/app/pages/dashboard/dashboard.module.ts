@@ -10,6 +10,12 @@ import { EvaluacionesListComponent } from './evaluacion/evaluaciones-list/evalua
 import { BrowserModule } from '@angular/platform-browser';
 import { ClasificacionesCreateComponent } from './clasificacion/clasificaciones-create/clasificaciones-create.component';
 import { MiProgresoComponent } from './mi-progreso/mi-progreso.component';
+import { AdminModule } from './admin/admin.module';
+import { ClasificacionesDetailsComponent } from './clasificacion/clasificaciones-details/clasificaciones-details.component';
+import { MiEmpresaComponent } from './account/mi-empresa/mi-empresa.component';
+import { EvaluacionesCreateComponent } from './evaluacion/evaluaciones-create/evaluaciones-create.component';
+import { EvaluacionItemsComponent } from './evaluacion/evaluacion-items/evaluacion-items.component';
+import { EvaluacionesDetailsComponent } from './evaluacion/evaluaciones-details/evaluaciones-details.component';
 
 
 @NgModule({
@@ -17,7 +23,12 @@ import { MiProgresoComponent } from './mi-progreso/mi-progreso.component';
     DashboardComponent,
     ClasificacionesListComponent,
     ClasificacionesCreateComponent,
+    ClasificacionesDetailsComponent,
+    MiEmpresaComponent,
     EvaluacionesListComponent,
+    EvaluacionesCreateComponent,
+    EvaluacionItemsComponent,
+    EvaluacionesDetailsComponent,
     SidebarComponent,
     MiProgresoComponent,
   ],
@@ -26,6 +37,11 @@ import { MiProgresoComponent } from './mi-progreso/mi-progreso.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    AdminModule,
+    DashboardRoutingModule,
+  ],
+  exports: [
+    AdminModule,
     DashboardRoutingModule,
   ]
 })

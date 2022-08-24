@@ -1,3 +1,4 @@
+import { Empresa } from "../empresa.interface";
 
 export interface LoginResponse {
     data: LoginData;
@@ -5,5 +6,7 @@ export interface LoginResponse {
 }
 
 export interface LoginData {
+  usuario: Empresa;
   token: string;
+  admin: boolean;
 }

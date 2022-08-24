@@ -1,0 +1,257 @@
+<div class="container-fluid">
+  <h2 class="fw-bold">Actualizar ítem de estandar mínimo</h2>
+  <h5 class="text-muted">Resolución 0312 de 2019</h5>
+  <br />
+  <div class="row">
+    <div class="col">
+      <form (ngSubmit)="actualizar(formulario)" #formulario="ngForm">
+        <!-- Ciclo -->
+        <div class="mb-3">
+          <label for="cicloId" class="form-label">Ciclo</label>
+          <select
+            [(ngModel)]="cicloId"
+            name="cicloId"
+            class="form-select"
+            aria-label="Ciclo"
+            (change)="onCicloChanged($event.target)"
+          >
+            <option value="0" selected>Seleccione un ciclo</option>
+            <option *ngFor="let ciclo of ciclos" [value]="ciclo.id">
+              {{ ciclo.tipo }}
+            </option>
+          </select>
+        </div>
+        <!-- Estandar mínimo -->
+        <div *ngIf="cicloId != 0" class="mb-3">
+          <label for="nivelRiesgo" class="form-label">Estandar mínimo</label>
+          <select
+            [(ngModel)]="estandarId"
+            name="estandarId"
+            class="form-select"
+            aria-label="Estándar mínimo"
+            (change)="onEstandarMinimoChanged($event.target)"
+          >
+            <option value="0" selected>Seleccione un estándar mínimo</option>
+            <option *ngFor="let estandar of estandares" [value]="estandar.id">
+              {{ estandar.nombre }}
+            </option>
+          </select>
+        </div>
+        <!-- Fase del estandar -->
+        <div *ngIf="estandarId != 0 && cicloId != 0" class="mb-3">
+          <label for="nivelRiesgo" class="form-label"
+            >Fase del estándar mínimo</label
+          >
+          <select
+            [(ngModel)]="subestandarId"
+            name="subestandarId"
+            class="form-select"
+            aria-label="Fase del estándar mínimo"
+            (change)="onSubestandarChanged($event.target)"
+          >
+            <option value="0" selected>Seleccione una fase del estándar</option>
+            <option *ngFor="let fase of subestandares" [value]="fase.id">
+              {{ fase.descripcion }}
+            </option>
+          </select>
+        </div>
+        <!-- Numeral -->
+        <div class="mb-3">
+          <label for="numeral" class="form-label">Numeral</label>
+          <input
+            id="numeral"
+            #numeral="ngModel"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="numeral.invalid && numeral.touched"
+            name="numeral"
+            [(ngModel)]="item!.numeral"
+            placeholder="0.0.0"
+            required
+          />
+        </div>
+        <!-- Descripcion -->
+        <div class="mb-3">
+          <label for="desc" class="form-label">Descripción</label>
+          <textarea
+            id="desc"
+            #desc="ngModel"
+            type="desc"
+            class="form-control"
+            [class.is-invalid]="desc.invalid && desc.touched"
+            name="desc"
+            [(ngModel)]="item!.descripcion"
+            placeholder="Ingrese la descripción"
+            required
+          ></textarea>
+        </div>
+        <!-- Valor -->
+        <div class="mb-3">
+          <label for="valor" class="form-label">Valor</label>
+          <input
+            id="valor"
+            #valor="ngModel"
+            type="number"
+            class="form-control"
+            [class.is-invalid]="valor.invalid && valor.touched"
+            name="valor"
+            [(ngModel)]="item!.valor"
+            step=".01"
+            placeholder="0.0"
+            required
+          />
+        </div>
+        <!-- Marco legal -->
+        <div class="mb-3">
+          <label for="marcoLegal" class="form-label">Marco legal</label>
+          <textarea
+            id="marcoLegal"
+            #marcoLegal="ngModel"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="marcoLegal.invalid && marcoLegal.touched"
+            name="marcoLegal"
+            [(ngModel)]="item!.marco_legal"
+            placeholder="Ingrese la referencias normativas"
+            required
+          ></textarea>
+        </div>
+        <!-- Criterio -->
+        <div class="mb-3">
+          <label for="criterio" class="form-label"
+            >Criterio de aceptación</label
+          >
+          <textarea
+            id="criterio"
+            #criterio="ngModel"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="criterio.invalid && criterio.touched"
+            name="criterio"
+            [(ngModel)]="item!.criterio_aceptacion"
+            placeholder="Describa el criterio de aceptación"
+            required
+          ></textarea>
+        </div>
+        <!-- Modo de verificacion -->
+        <div class="mb-3">
+          <label for="modoVerificacion" class="form-label"
+            >Modo de verificación</label
+          >
+          <textarea
+            id="modoVerificacion"
+            #modoVerificacion="ngModel"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="
+              modoVerificacion.invalid && modoVerificacion.touched
+            "
+            name="modoVerificacion"
+            [(ngModel)]="item!.modo_verificacion"
+            placeholder="Describa el modo de verificación"
+            required
+          ></textarea>
+        </div>
+        <!-- Aplica para CAP 3 -->
+        <div class="mb-3">
+          <label for="aplicaCap3" class="form-label">Aplica Capítulo III</label>
+          <select
+            [(ngModel)]="item!.tipo_3"
+            name="aplicaCap3"
+            class="form-select"
+            aria-label="Cap I"
+            (change)="onCap3Changed($event.target)"
+          >
+            <option value="0">NO</option>
+            <option value="1" selected>SI</option>
+          </select>
+        </div>
+        <!-- Aplica para CAP 2 -->
+        <div class="mb-3">
+          <label for="aplicaCap2" class="form-label">Aplica Capítulo II</label>
+          <select
+            [(ngModel)]="item!.tipo_2"
+            name="aplicaCap2"
+            class="form-select"
+            aria-label="Cap I"
+            (change)="onCap2Changed($event.target)"
+          >
+            <option value="0">NO</option>
+            <option value="1" selected>SI</option>
+          </select>
+        </div>
+        <!-- Aplica para CAP 1 -->
+        <div class="mb-3">
+          <label for="aplicaCap1" class="form-label">Aplica Capítulo I</label>
+          <select
+            [(ngModel)]="item!.tipo_1"
+            name="aplicaCap1"
+            class="form-select"
+            aria-label="Cap I"
+            [value]="aplicaCap1"
+            (change)="onCap1Changed($event.target)"
+          >
+            <option value="0">NO</option>
+            <option value="1" selected>SI</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar ítem</button>
+      </form>
+    </div>
+    <!--  -->
+    <div class="col">
+      <!-- Cap 1 -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">CAPÍTULO I</h5>
+          <div class="card-text">
+            <figcaption>
+              ESTANDARES MINIMOS PARA EMPRESAS, EMPLEADORES Y CONTRATANTES CON
+              DIEZ (10) O MENOS TRABAJADORES, CLASIFICADAS CON RIESGO I, II O
+              III
+            </figcaption>
+            <br />
+            <figcaption class="blockquote-footer">
+              Resolución 0312 de 2019 - Artículo 3
+            </figcaption>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- Cap 2 -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">CAPÍTULO II</h5>
+          <div class="card-text">
+            <figcaption>
+              ESTANDARES MINIMOS PARA EMPRESAS DE ONCE (11) A CINCUENTA (50)
+              TRABAJADORES, CLASIFICADAS CON RIESGO I, II O III
+            </figcaption>
+            <br />
+            <figcaption class="blockquote-footer">
+              Resolución 0312 de 2019 - Artículo 9
+            </figcaption>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- Cap 3 -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">CAPÍTULO III</h5>
+          <div class="card-text">
+            <figcaption>
+              ESTANDARES MINIMOS PARA EMPRESAS DE MÑAS DE CINCUENTA (50)
+              TRABAJADORES CLASIFICADAS CON RIESGO I, II, III, IV O V Y DE
+              CINCUENTA (50) O MENOS TRABAJADORES CON RIESGO IV O V
+            </figcaption>
+            <br />
+            <figcaption class="blockquote-footer">
+              Resolución 0312 de 2019 - Artículo 16
+            </figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

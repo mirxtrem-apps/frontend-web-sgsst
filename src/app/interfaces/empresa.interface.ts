@@ -1,4 +1,5 @@
 export interface Empresa {
+    credencial_id?: number;
     nit: number;
     razon_social: string;
     direccion: string;
@@ -6,3 +7,4 @@ export interface Empresa {
     cod_ciiu: number;
     mineria: boolean;
 }
+

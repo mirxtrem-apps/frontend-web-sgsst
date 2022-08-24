@@ -1,0 +1,183 @@
+<div class="container-fluid">
+  <h1 class="fw-bold">Evaluacion # {{ evaluacionId }}</h1>
+  <h4 class="text-muted mb-3">Estandares mínimos del SG-SST</h4>
+  <p class="blockquote-footer">Resolución 0312 de 2019</p>
+
+  <hr />
+  <br />
+  <div class="row" *ngFor="let item of listItems; let i = index">
+    <div class="col" *ngIf="currentIndex == i">
+      <h3 class="fw-bolder">{{ item.data.ciclo }}</h3>
+      <h5 class="text-primary">{{ item.data.estandar_minimo_nombre }}</h5>
+      <h5 class="text-muted">{{ item.data.estandar_minimo_descripcion }}</h5>
+      <p class="fw-bold lead">
+        {{ item.data.numeral }} {{ item.data.item_descripcion }}
+      </p>
+      <form #formulario="ngForm">
+        <div class="form-check mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            #cumple
+            name="cumple"
+            [(ngModel)]="item.item.cumple"
+            (change)="onCumpleChanged($event.target, item)"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Cumple
+          </label>
+        </div>
+        <div class="form-check mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            #noAplica
+            name="noAplica"
+            [(ngModel)]="item.item.no_aplica"
+            (change)="onAplicaChanged($event.target, item)"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            No Aplica
+          </label>
+        </div>
+        <div *ngIf="item.item.no_aplica" class="form-check mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            #justifica
+            name="justifica"
+            [(ngModel)]="item.item.justifica"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Justifica
+          </label>
+        </div>
+        <div *ngIf="item.item.no_aplica"  class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Justificación</label
+          >
+          <textarea
+            class="form-control"
+            #observacion
+            name="observacion"
+            [(ngModel)]="item.item.observacion"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button
+            class="btn btn-secondary me-md-2"
+            type="button"
+            (click)="previous()"
+          >
+            Anterior
+          </button>
+
+          <button class="btn btn-primary" type="button" (click)="next()" >
+            Siguiente
+          </button>
+
+        </div>
+        <hr />
+      </form>
+    </div>
+    <!-- CARD ACCORDION -->
+    <div class="col" *ngIf="currentIndex == i">
+      <div class="accordion shadow-sm" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              <b>Criterio</b>
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <small>{{ item.data.criterio_aceptacion }}</small>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              <b>Modo de verificación</b>
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <small>{{ item.data.modo_verificacion }}</small>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              <b>Marco legal</b>
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <small>{{ item.data.marco_legal }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="progress">
+    <div
+      class="progress-bar bg-success"
+      role="progressbar"
+      aria-label="Example with label"
+      [ngStyle]="{width: currentPercent + '%'}"
+      aria-valuenow="0"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      {{ currentPercent }}%
+    </div>
+  </div>
+  <p><small>Progreso: {{itemsDone.length}}/{{ listItems.length }}</small></p>
+  <div class="my-3">
+    <button class="btn btn-primary" type="button" (click)="guardar()">Guardar</button>
+  </div>
+</div>

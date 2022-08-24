@@ -1,1 +1,79 @@
-<p>mi-empresa works!</p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-8">
+        <form>
+          <h2 class="fw-bolder">Mi empresa</h2>
+
+          <div class="mb-3">
+            <label for="nit" class="form-label"
+              >NIT</label
+            >
+            <input
+              id="nit"
+              #nit="ngModel"
+              type="number"
+              class="form-control"
+              [class.is-invalid]="nit.invalid && nit.touched"
+              name="nit"
+              [(ngModel)]="empresa!.nit"
+              placeholder="Ingresa el NIT de la empresa"
+              disabled
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="razonSocial" class="form-label"
+              >Razón social</label
+            >
+            <input
+              id="razonSocial"
+              #razonSocial="ngModel"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="razonSocial.invalid && razonSocial.touched"
+              name="razonSocial"
+              [(ngModel)]="empresa!.razon_social"
+              placeholder="Ingrese el nombre de la empresa"
+              disabled
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="direccion" class="form-label"
+              >Dirección</label
+            >
+            <input
+              id="direccion"
+              #direccion="ngModel"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="direccion.invalid && direccion.touched"
+              name="direccion"
+              [(ngModel)]="empresa!.direccion"
+              placeholder="Ingrese la dirección de la empresa"
+              disabled
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="telefono" class="form-label"
+              >Teléfono</label
+            >
+            <input
+              id="telefono"
+              #telefono="ngModel"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="telefono.invalid && telefono.touched"
+              name="telefono"
+              [(ngModel)]="empresa!.telefono"
+              placeholder="Ingrese un número telefónico"
+              disabled
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

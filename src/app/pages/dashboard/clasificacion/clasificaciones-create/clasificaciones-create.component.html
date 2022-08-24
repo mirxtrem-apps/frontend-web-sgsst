@@ -1,6 +1,16 @@
 <div class="container-fluid">
   <h2 class="fw-bold">Nueva Clasificación</h2>
-  <h5 class="text-muted">Clasificación de los estándares mínimos</h5>
+  <h5 class="text-muted mb-3">Clasificación de los estándares mínimos</h5>
+  <div class="mb-3">
+    <p class="mb-4">
+      La clasificación de los estándares mínimos consiste en calcular el número
+      de estándares que debe evaluar y el tipo de responsable que debe contratar
+      para implementar el Sistema de Gestión de Seguridad y Salud en el Trabajo
+      SG-SST.
+    </p>
+    <p class="blockquote-footer">Resolución 0312 de 2019</p>
+  </div>
+  <hr />
   <div class="row">
     <div class="col">
       <form (ngSubmit)="guardar(formulario)" #formulario="ngForm">
@@ -35,57 +45,39 @@
             </option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Guardar resultado</button>
+        <hr />
+        <div class="col">
+          <h5 class="fw-bold text-primary">Resultado de la clasificación</h5>
+          <div class="mb-3">
+            <p class="fw-bold">
+              Tipo de Responsable SST
+              <span style="font-size: 18px" class="ms-2 material-icons"
+                >info_outlined</span
+              >
+            </p>
+            <h4 class="fw-bolder">{{ tipoResponsable }}</h4>
+          </div>
+          <div class="mb-3">
+            <p class="fw-bold">
+              Número de ítem a evaluar
+              <span style="font-size: 18px" class="ms-2 material-icons"
+                >info_outlined</span
+              >
+            </p>
+            <h4 class="fw-bolder">{{ numItemsEvaluar }} Estándares mínimos</h4>
+          </div>
+          <br />
+          <button class="btn btn-primary" type="submit">
+            Guardar resultado
+          </button>
+        </div>
       </form>
     </div>
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Clasificación de los estándares mínimos</h5>
-          <div class="card-text">
-            <figcaption>
-              La clasificación de los estándares mínimos consiste en calcular el
-              número de estándares que debe evaluar y el tipo de responsable que
-              debe contratar para implementar el Sistema de Gestión de Seguridad
-              y Salud en el Trabajo SG-SST.
-            </figcaption>
-            <br />
-            <figcaption class="blockquote-footer">
-              Resolución 0312 de 2019
-            </figcaption>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr />
-  <div class="row">
-    <div class="col">
-      <h5 class="fw-bold text-primary">Resultado de la clasificación</h5>
-      <div class="mb-3">
-        <p class="fw-bold">
-          Tipo de Responsable SST
-          <span style="font-size: 18px" class="ms-2 material-icons"
-            >info_outlined</span
-          >
-        </p>
-        <h4 class="fw-bolder">{{ tipoResponsable }}</h4>
-      </div>
-      <div class="mb-3">
-        <p class="fw-bold">
-          Número de ítem a evaluar
-          <span style="font-size: 18px" class="ms-2 material-icons"
-            >info_outlined</span
-          >
-        </p>
-        <h4 class="fw-bolder">{{ numItemsEvaluar }} Estándares mínimos</h4>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
           <h5 class="card-title">
-            {{ tipoEvaluacion?.responsable ?? "Sin definir" }}
+            {{ tipoEvaluacion?.responsable ?? "Responsable sin definir" }}
           </h5>
           <div class="card-text">
             <blockquote class="blockquote">
@@ -94,9 +86,11 @@
                   "Ingrese los datos para hacer el cálculo."
               }}</small>
             </blockquote>
-            <br>
+            <br />
             <figcaption class="blockquote-footer">
-              <cite title="resolución 0312 de 2019">{{tipoEvaluacion?.cita ?? ""}}</cite>
+              <cite title="resolución 0312 de 2019">{{
+                tipoEvaluacion?.cita ?? ""
+              }}</cite>
             </figcaption>
           </div>
         </div>

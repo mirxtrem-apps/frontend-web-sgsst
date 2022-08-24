@@ -6,8 +6,8 @@ import { SgsstCoreService } from 'src/app/services/sgsst/sgsst-core/sgsst-core.s
 import { FormsModule } from '@angular/forms';
 import { ClasificacionesCreateComponent } from './clasificaciones-create.component';
 import { from } from 'rxjs';
-import { TipoResponsable } from 'src/app/interfaces/tipo_responsable.interface';
-import { TipoEvaluacion } from 'src/app/interfaces/tipo_evaluacion.interface';
+import { TipoResponsable } from 'src/app/interfaces/response/tipo_responsable.interface';
+import { TipoEvaluacion } from 'src/app/interfaces/response/tipo_evaluacion.interface';
 
 describe('ClasificacionesCreateComponent', () => {
   let component: ClasificacionesCreateComponent;

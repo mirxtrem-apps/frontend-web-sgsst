@@ -1,1 +1,47 @@
-<p>evaluaciones-details works!</p>
+<h1 class="fw-bold">Evaluacion # {{ evaluacion?.id }}</h1>
+<h4 class="text-muted mb-3">Evaluación de los estándares mínimos</h4>
+<p class="lead mb-3">Fecha: {{ evaluacion?.fecha | date }}</p>
+
+<p class="lead mb-3">
+  <b>Resumen de la evaluación</b>
+</p>
+<hr />
+<p class="lead mb-3">
+  Número de empleados:
+  <b>{{ clasificacion?.num_empleados }}</b>
+</p>
+
+<p class="lead mb-3">
+  Nivel de riesgo:
+  <b>{{ clasificacion?.nivel_riesgo }}</b>
+</p>
+
+<p class="lead mb-3">
+  Número de estándares a evaluar:
+  <b>{{ clasificacion?.num_estandares }}</b>
+</p>
+<!-- avance -->
+<p class="lead mb-3">
+  Número de estándares cumplidos:
+  <b>{{ evaluacion?.cant_estandares_cumplidos }}</b>
+</p>
+<p class="lead mb-3">
+  Número de estándares no cumplidos:
+  <b>{{ evaluacion?.cant_estandares_nc }}</b>
+</p>
+<p class="lead mb-3">
+  Número de estándares que no aplica:
+  <b>{{ evaluacion?.cant_estandares_na }}</b>
+</p>
+<p class="lead mb-3">
+  Número de estándares justificados:
+  <b>{{ evaluacion?.cant_estandares_justificados }}</b>
+</p>
+<p class="lead mb-3">
+  Evaluación completa:
+  <b>{{ evaluacion?.cant_estandares_justificados ? "SI" : "NO" }}</b>
+</p>
+
+<a [routerLink]="['../']" class="btn btn-secondary btn-lg"
+  >Atrás</a
+>

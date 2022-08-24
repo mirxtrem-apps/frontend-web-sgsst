@@ -18,6 +18,19 @@ import { EvaluacionesListComponent } from './pages/dashboard/evaluacion/evaluaci
 import { PlanesMejoraListComponent } from './pages/dashboard/planes-mejora/planes-mejora-list/planes-mejora-list.component';
 import { EmailConfirmedComponent } from './pages/auth/email-confirmed/email-confirmed.component';
 import { CrearEmpresaComponent } from './pages/auth/crear-empresa/crear-empresa.component';
+import { DashboardRoutingModule } from './pages/dashboard/dashboard-routing.module';
+import { AdminComponent } from './pages/dashboard/admin/admin.component';
+import { EstandaresMinimosComponent } from './pages/dashboard/admin/estandares-minimos/estandares-minimos.component';
+import { SubEstandaresMinimosComponent } from './pages/dashboard/admin/sub-estandares-minimos/sub-estandares-minimos.component';
+import { CiclosComponent } from './pages/dashboard/admin/ciclos/ciclos.component';
+import { ItemsEstandarComponent } from './pages/dashboard/admin/items-estandar/items-estandar-list/items-estandar.component';
+import { ItemsEstandarCreateComponent } from './pages/dashboard/admin/items-estandar/items-estandar-create/items-estandar-create.component';
+import { ItemsEstandarDetailsComponent } from './pages/dashboard/admin/items-estandar/items-estandar-details/items-estandar-details.component';
+import { AdminGuard } from './middlewares/admin.guard';
+import { AuthGuard } from './middlewares/auth.guard';
+import { EvaluacionesCreateComponent } from './pages/dashboard/evaluacion/evaluaciones-create/evaluaciones-create.component';
+import { EvaluacionesDetailsComponent } from './pages/dashboard/evaluacion/evaluaciones-details/evaluaciones-details.component';
+import { EvaluacionItemsComponent } from './pages/dashboard/evaluacion/evaluacion-items/evaluacion-items.component';
 
 
 const routes: Routes = [
@@ -50,10 +63,45 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [
+      AuthGuard,
+    ],
     children: [
       {
         path: 'mi-empresa',
         component: MiEmpresaComponent,
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [ AdminGuard ],
+        children: [
+          {
+            path: 'items-estandar',
+            component: ItemsEstandarComponent,
+          },
+          {
+            path: 'items-estandar/nuevo',
+            component: ItemsEstandarCreateComponent,
+          },
+          {
+            path: 'items-estandar/:id',
+            component: ItemsEstandarDetailsComponent,
+          },
+          {
+            path: 'estandares-minimos',
+            component: EstandaresMinimosComponent,
+          },
+          {
+            path: 'sub-estandares-minimos',
+            component: SubEstandaresMinimosComponent,
+          },
+          {
+            path: 'ciclos',
+            component: CiclosComponent,
+          },
+          { path: '', redirectTo: '/dashboard/admin/items-estandar', pathMatch: 'full' },
+        ],
       },
       {
         path: 'mi-progreso',
@@ -78,6 +126,18 @@ const routes: Routes = [
       {
         path: 'evaluaciones',
         component: EvaluacionesListComponent,
+      },
+      {
+        path: 'evaluaciones/nuevo',
+        component: EvaluacionesCreateComponent,
+      },
+      {
+        path: 'evaluaciones/:id',
+        component: EvaluacionesDetailsComponent,
+      },
+      {
+        path: 'evaluaciones/items/:id',
+        component: EvaluacionItemsComponent,
       },
       {
         path: 'planes-de-mejora',

@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import {
   LoginData,
   LoginResponse,
-} from 'src/app/interfaces/login_response.interface';
+} from 'src/app/interfaces/response/login_response.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -24,8 +24,16 @@ export class AuthService {
   }
 
   checkSession(): boolean {
-    // TODO: cambiar por el token
-    if (localStorage.getItem('nit')) {
+    if (localStorage.getItem('token')) {
+      return true;
+    }
+    return false;
+  }
+
+  isAdminRole(): boolean {
+    const isAdmin = localStorage.getItem('admin') ?? 'false';
+    console.log();
+    if (JSON.parse(isAdmin) == true) {
       return true;
     }
     return false;
@@ -41,7 +49,9 @@ export class AuthService {
       })
       .pipe(
         tap((resp) => (this._auth = resp.data)),
-        tap((resp) => localStorage.setItem('token', resp.data.token.toString()))
+        tap((resp) => localStorage.setItem('usuario', JSON.stringify(resp.data.usuario))),
+        tap((resp) => localStorage.setItem('token', resp.data.token.toString())),
+        tap((resp) => localStorage.setItem('admin', resp.data.admin.toString()))
       );
   }
 
@@ -85,5 +95,6 @@ export class AuthService {
 
   logout() {
     this._auth = undefined;
+    localStorage.clear();
   }
 }

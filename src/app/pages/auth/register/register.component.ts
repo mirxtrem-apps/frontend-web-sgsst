@@ -18,7 +18,11 @@ export class RegisterComponent {
   terminos: boolean = false;
   politicas: boolean = false;
 
-  constructor(private _auth: AuthService, private _router: Router, private alert: ToastrService) { }
+  constructor(
+    private _auth: AuthService, 
+    private _router: Router, 
+    private alert: ToastrService,
+  ) { }
 
   toggleVisibility() {
     this.visible = !this.visible;

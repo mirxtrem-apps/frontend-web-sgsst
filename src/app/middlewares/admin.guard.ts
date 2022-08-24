@@ -4,6 +4,7 @@ import {
   CanActivate,
   CanLoad,
   Route,
+  Router,
   RouterStateSnapshot,
   UrlSegment,
   UrlTree,
@@ -15,7 +16,7 @@ import { AuthService } from '../services/auth/auth.service';
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate, CanLoad {
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService, private _router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -24,9 +25,11 @@ export class AdminGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this._authService.auth.rol == 'admin') {
+    const isAdmin = this._authService.auth.admin;
+    if (isAdmin) {
       return true;
     }
+    this._router.navigateByUrl('/dashboard');
     return false;
   }
   canLoad(
@@ -37,9 +40,11 @@ export class AdminGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this._authService.auth.rol == 'admin') {
+    const isAdmin = this._authService.auth.admin;
+    if (isAdmin) {
       return true;
     }
+    this._router.navigateByUrl('/dashboard');
     return false;
   }
 }

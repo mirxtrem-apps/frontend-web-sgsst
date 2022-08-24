@@ -1,44 +1,42 @@
 <div class="vh-100 border-end p-2 sticky-top">
-    <div class="brand">
+  <div class="brand">
+    <a
+      class="navbar-brand d-flex align-items-center justify-content-center"
+      [routerLink]="['/dashboard']"
+    >
+      <div class="mx-2">
+        <img
+          src="assets/svg/helmet.svg"
+          width="80"
+          alt="Software para el Sistema de Geestion de Seguridad y Salud en el Trabajo"
+          srcset=""
+        />
+      </div>
+      <div class="text-dark">
+        <h2 class="fw-bolder mb-0">SG-SST</h2>
+        <p class="eslogan mb-0">Sistema de información</p>
+      </div>
+    </a>
+  </div>
+  <br />
+  <ul class="nav flex-column">
+    <li><hr class="dropdown-divider" /></li>
+    <h6 class="ms-3 fw-bolder">{{ empresa?.razon_social }}</h6>
+    <li class="nav-item">
       <a
-        class="navbar-brand d-flex align-items-center justify-content-center"
-        [routerLink]="['/dashboard']"
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['mi-empresa']"
       >
-        <div class="mx-2">
-          <img
-            src="assets/svg/helmet.svg"
-            width="80"
-            alt="Software para el Sistema de Geestion de Seguridad y Salud en el Trabajo"
-            srcset=""
-          />
+        <div class="icon-box d-flex align-items-center justify-content-center">
+          <span class="material-icons"> business </span>
         </div>
-        <div class="text-dark">
-          <h2 class="fw-bolder mb-0">SG-SST</h2>
-          <p class="eslogan mb-0">Sistema de información</p>
-        </div>
-      </a>
-    </div>
-    <hr class="dropdown-divider" />
-    <ul class="nav flex-column">
-      <br />
-      <!-- <h4 class="fw-bolder">{{ empresa.razon_social ?? "Nombre empresa" }}</h4> -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          routerLinkActive="active"
-          aria-current="page"
-          [routerLink]="['mi-empresa']"
-        >
-          <div
-            class="icon-box d-flex align-items-center justify-content-center"
-          >
-            <span class="material-icons"> business </span>
-          </div>
-          Mi empresa</a
-        >
-      </li>
-      <!-- Politicas y reglamentos -->
-      <!-- <li class="nav-item">
+        Mi empresa</a
+      >
+    </li>
+    <!-- Politicas y reglamentos -->
+    <!-- <li class="nav-item">
         <a
           class="nav-link d-flex align-items-center"
           routerLinkActive="active"
@@ -53,8 +51,8 @@
           Políticas</a
         >
       </li> -->
-      <!-- Mis empleados -->
-      <!-- <li class="nav-item">
+    <!-- Mis empleados -->
+    <!-- <li class="nav-item">
         <a
           class="nav-link d-flex align-items-center"
           routerLinkActive="active"
@@ -69,99 +67,154 @@
           Mi empleados</a
         >
       </li> -->
-      <li><hr class="dropdown-divider"/></li>
-      <h4 class="ms-3 fw-bolder">SG-SST</h4>
-      <!-- Mi Progreso -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          routerLinkActive="active"
-          aria-current="page"
-          [routerLink]="['mi-progreso']"
-        >
-          <div
-            class="icon-box d-flex align-items-center justify-content-center"
-          >
-            <span class="material-icons"> assessment </span>
-          </div>
-          Mi progreso</a
-        >
-      </li>
-      <!-- Responsable -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          routerLinkActive="active"
-          aria-current="page"
-          [routerLink]="['responsables']"
-        >
-          <div
-            class="icon-box d-flex align-items-center justify-content-center"
-          >
-            <span class="material-icons"> assignment_ind </span>
-          </div>
-          Responsable SST</a
-        >
-      </li>
-      <!-- Clasificaciones -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          routerLinkActive="active"
-          aria-current="page"
-          [routerLink]="['clasificaciones']"
-        >
-          <div
-            class="icon-box d-flex align-items-center justify-content-center"
-          >
-            <span class="material-icons"> assignment_late </span>
-          </div>
-          Mis Clasificaciones</a
-        >
-      </li>
-      <!-- Evaluaciuones -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          routerLinkActive="active"
-          aria-current="page"
-          [routerLink]="['evaluaciones']"
-        >
-          <div
-            class="icon-box d-flex align-items-center justify-content-center"
-          >
-            <span class="material-icons"> assignment </span>
-          </div>
-          Mis Evaluaciones</a
-        >
-      </li>
-      <!-- Plan de mejora -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          routerLinkActive="active"
-          aria-current="page"
-          [routerLink]="['planes-de-mejora']"
-        >
-          <div
-            class="icon-box d-flex align-items-center justify-content-center"
-          >
-            <span class="material-icons"> assignment_turned_in </span>
-          </div>
-          Mi plan de mejora</a
-        >
-      </li>
-      <!-- Plan de mejora -->
+    <div *ngIf="isAdmin">
       <li><hr class="dropdown-divider" /></li>
+      <h6 class="ms-3 fw-bolder">Admin</h6>
 
-        <button class="btn d-flex align-items-center justify-content-center p-1">
+      <!-- <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['admin/ciclos']"
+      >
+        <div
+          class="icon-box d-flex align-items-center justify-content-center"
+        >
+          <span class="material-icons"> fact_check </span>
+        </div>
+        Ciclos</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['admin/estandares-minimos']"
+      >
+        <div
+          class="icon-box d-flex align-items-center justify-content-center"
+        >
+          <span class="material-icons"> fact_check </span>
+        </div>
+        Estandares minimos</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['admin/sub-estandares-minimos']"
+      >
+        <div
+          class="icon-box d-flex align-items-center justify-content-center"
+        >
+          <span class="material-icons"> fact_check </span>
+        </div>
+        Sub Estandares</a
+      >
+    </li> -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          routerLinkActive="active"
+          aria-current="page"
+          [routerLink]="['admin/items-estandar']"
+        >
           <div
             class="icon-box d-flex align-items-center justify-content-center"
-            (click)="logout()"
           >
-            <span class="material-icons"> logout </span>
+            <span class="material-icons"> fact_check </span>
           </div>
-          Cerrar sesión
-        </button>
-    </ul>
-  </div>
+          Ítems del estandar</a
+        >
+      </li>
+    </div>
+    <li><hr class="dropdown-divider" /></li>
+    <h6 class="ms-3 fw-bolder">SG-SST</h6>
+    <!-- Mi Progreso -->
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['mi-progreso']"
+      >
+        <div class="icon-box d-flex align-items-center justify-content-center">
+          <span class="material-icons"> assessment </span>
+        </div>
+        Mi progreso</a
+      >
+    </li>
+    <!-- Responsable -->
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['responsables']"
+      >
+        <div class="icon-box d-flex align-items-center justify-content-center">
+          <span class="material-icons"> assignment_ind </span>
+        </div>
+        Responsable SST</a
+      >
+    </li>
+    <!-- Clasificaciones -->
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['clasificaciones']"
+      >
+        <div class="icon-box d-flex align-items-center justify-content-center">
+          <span class="material-icons"> assignment_late </span>
+        </div>
+        Mis Clasificaciones</a
+      >
+    </li>
+    <!-- Evaluaciuones -->
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['evaluaciones']"
+      >
+        <div class="icon-box d-flex align-items-center justify-content-center">
+          <span class="material-icons"> assignment </span>
+        </div>
+        Mis Evaluaciones</a
+      >
+    </li>
+    <!-- Plan de mejora -->
+    <li class="nav-item">
+      <a
+        class="nav-link d-flex align-items-center"
+        routerLinkActive="active"
+        aria-current="page"
+        [routerLink]="['planes-de-mejora']"
+      >
+        <div class="icon-box d-flex align-items-center justify-content-center">
+          <span class="material-icons"> assignment_turned_in </span>
+        </div>
+        Mi plan de mejora</a
+      >
+    </li>
+    <!-- Cerrar sessión -->
+    <li><hr class="dropdown-divider" /></li>
+
+    <button
+      class="btn d-flex align-items-center justify-content-center p-1"
+      (click)="logout()"
+    >
+      <div class="icon-box d-flex align-items-center justify-content-center">
+        <span class="material-icons"> logout </span>
+      </div>
+      Cerrar sesión
+    </button>
+  </ul>
+</div>
