@@ -2,9 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// TODO: Pruebas locales baseUrl: "http://localhost:3001/v1",
+
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:3001/v1",
+  baseUrl: "https://segsas.com/api",
 };
 
 /*
