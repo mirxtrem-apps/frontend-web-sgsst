@@ -6,7 +6,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://segsas.com/api",
+  baseUrl: "https://segsas.com/api/v1",
 };
 
 /*
